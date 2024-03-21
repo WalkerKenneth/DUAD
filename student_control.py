@@ -1,4 +1,4 @@
-def menu():
+def get_menu_value():
     selection = 0
     print(
         """
@@ -20,3 +20,33 @@ def menu():
         except ValueError as ex:
             print (ex)
     return selection
+
+
+def create_student(headers):
+    student = {}
+    for element in headers:
+        for key in element:
+            student[key] = input(f'Student {element[key]}: ')
+    print(student)
+    return student
+
+
+def main():
+    student_list = []
+    operator = 0
+    headers = [
+        {'name': 'Name'},
+        {'group': 'Group'},
+        {'spanish_note':'Spanish note'},
+        {'english_note':'English note'},
+        {'history_note':'History note'},
+        {'science_note':'Science note'},
+    ]
+    # while True:
+    operator = get_menu_value()
+    if operator == 1:
+        student_list.append(create_student(headers))
+
+
+if __name__=='__main__':
+    main()
