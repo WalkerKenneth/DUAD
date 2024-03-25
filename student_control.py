@@ -26,6 +26,29 @@ def get_menu_value():
     return selection
 
 
+def get_student_note(text):
+    note = 0
+    while True:
+        try:
+            note = int(input(text))
+            if note < 0 or note > 100:
+                raise ValueError()
+            return note
+        except ValueError as ex:
+            print('Invalid note')
+
+
+def create_student(headers):
+    student = {}
+    for element in headers:
+        for key in element:
+            if key == 'name' or key == 'group':
+                student[key] = input(f'Student {element[key]}: ')
+            else:
+                student[key] = get_student_note(element[key] + ': ')
+    return student
+
+
 def create_student_list():
     student_list = []
     headers = [
@@ -44,30 +67,6 @@ def create_student_list():
     return student_list
 
 
-
-def create_student(headers):
-    student = {}
-    for element in headers:
-        for key in element:
-            if key == 'name' or key == 'group':
-                student[key] = input(f'Student {element[key]}: ')
-            else:
-                student[key] = get_student_note(element[key] + ': ')
-    return student
-
-
-def get_student_note(text):
-    note = 0
-    while True:
-        try:
-            note = int(input(text))
-            if note < 0 or note > 100:
-                raise ValueError()
-            return note
-        except ValueError as ex:
-            print('Invalid note')
-
-
 def show_student_data(student_list):
     print(student_list)
     print('Student Data')
@@ -79,17 +78,6 @@ def show_student_data(student_list):
             'History note: ' + str(student['history_note']) + ' ' +
             'Science note: ' + str(student['science_note']) + ' ' +
             '\n--------'
-        )
-
-
-def show_top_students(student_list):
-    student_average = []
-    for student in student_list:
-        student_average.append({'name':student['name'], 'average':get_average(student)})
-    top_student = get_top_student(student_average)
-    for best_student in top_student:
-        print(
-            f'{best_student['name']}: Average: {best_student['average']}'
         )
 
 
@@ -119,6 +107,17 @@ def get_top_student(list):
     return top_3_student
 
 
+def show_top_students(student_list):
+    student_average = []
+    for student in student_list:
+        student_average.append({'name':student['name'], 'average':get_average(student)})
+    top_student = get_top_student(student_average)
+    for best_student in top_student:
+        print(
+            f'{best_student['name']}: Average: {best_student['average']}'
+        )
+
+
 def show_all_students_average(list):
     total_average = 0
     for student in list:
@@ -135,7 +134,7 @@ def export_data(list):
     except IndexError as ex:
         print('Incorrect list provided')
 
-    with open('student_list.txt', 'w', encoding='utf-8') as file:
+    with open('student_list.csv', 'w', encoding='utf-8') as file:
         writer = csv.DictWriter(file, headers)
         writer.writeheader()
         writer.writerows(list)
@@ -144,7 +143,7 @@ def export_data(list):
 def import_data():
     student_list = []
     try:
-        with open('student_list.txt', 'r', encoding='utf-8') as file:
+        with open('student_list.csv', 'r', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 student_list.append(row)
