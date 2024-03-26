@@ -100,10 +100,12 @@ def get_top_student(list, student_number):
                 for best_student in top_student:
                     if student_average['average'] > best_student['average']:
                         top_student.insert(top_student.index(best_student), student_average)
-                        if len(top_student) > student_number:
-                            top_student.pop
-                    else:
-                        pass
+                        break
+                    elif (len(top_student) < student_number):
+                        top_student.append(student_average)
+                if len(top_student) > student_number:
+                    top_student.pop()
+
     except IndexError:
         print('No more student in the data base: Index Error')
     except KeyError:
@@ -115,6 +117,7 @@ def get_top_student(list, student_number):
 
 def show_top_students(student_list):
     top_student = get_top_student(student_list, 3)
+    print('Top students')
     for best_student in top_student:
         print(
             f'{best_student['name']}: Average: {best_student['average']}'
