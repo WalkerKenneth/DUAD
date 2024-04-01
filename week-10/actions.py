@@ -1,4 +1,4 @@
-import student
+from student import Student
 
 def get_student_note(text):
     note = 0
@@ -13,7 +13,7 @@ def get_student_note(text):
 
 
 def create_student():
-    return student (
+    return Student (
         input('Student Name: '),
         input('Student Group: '),
         get_student_note('Spanish: '),

@@ -1,5 +1,5 @@
 import csv
-import student
+from student import Student
 
 def import_data():
     student_list = []
@@ -10,7 +10,7 @@ def import_data():
                 for key in row:
                     if key[len(key)-4:len(key)] == 'note':
                         row[key] = int(row[key])
-                student_list.append(student(
+                student_list.append(Student(
                     row['name'],
                     row['group'],
                     row['spanish_note'],

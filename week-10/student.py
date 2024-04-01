@@ -1,10 +1,5 @@
 class Student:
 
-
-    def __init__(self) -> None:
-        pass
-
-
     def __init__(self, name, group, spanish_note, english_note, history_note, science_note) -> None:
         self.name = name
         self.group = group
