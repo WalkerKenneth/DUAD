@@ -1,3 +1,5 @@
+from student import Student
+
 def get_student_note(text):
     note = 0
     while True:
@@ -10,29 +12,21 @@ def get_student_note(text):
             print('Invalid note')
 
 
-def create_student(headers):
-    student = {}
-    for element in headers:
-        for key in element:
-            if key == 'name' or key == 'group':
-                student[key] = input(f'Student {element[key]}: ')
-            else:
-                student[key] = get_student_note(element[key] + ': ')
-    return student
+def create_student():
+    return Student (
+        input('Student Name: '),
+        input('Student Group: '),
+        get_student_note('Spanish: '),
+        get_student_note('English: '),
+        get_student_note('History: '),
+        get_student_note('Science: '),
+    )
 
 
 def create_student_list():
     student_list = []
-    headers = [
-        {'name': 'Name'},
-        {'group': 'Group'},
-        {'spanish_note':'Spanish note'},
-        {'english_note':'English note'},
-        {'history_note':'History note'},
-        {'science_note':'Science note'},
-        ]
     while True:
-        student_list.append(create_student(headers))
+        student_list.append(create_student())
         stop = input('Stop to add students (Y/N)')
         if stop == 'Y' or stop == 'y':
             break
@@ -42,21 +36,21 @@ def create_student_list():
 def show_student_data(student_list):
     print('Student Data')
     for student in student_list:
-        print(student['name'] + ' - Group ' + student['group'])
+        print(student.name + ' - Group ' + student.group)
         print(
-            'Spanish note: ' + str(student['spanish_note']) + ' ' +
-            'English note: ' + str(student['english_note']) + ' ' +
-            'History note: ' + str(student['history_note']) + ' ' +
-            'Science note: ' + str(student['science_note']) + ' ' +
+            'Spanish note: ' + str(student.spanish_note) + ' ' +
+            'English note: ' + str(student.english_note) + ' ' +
+            'History note: ' + str(student.history_note) + ' ' +
+            'Science note: ' + str(student.science_note) + ' ' +
             '\n--------'
         )
 
 
 def get_average(student):
-    return (student['spanish_note'] +
-            student['english_note'] +
-            student['history_note'] +
-            student['science_note']
+    return (student.spanish_note +
+            student.english_note +
+            student.history_note +
+            student.science_note
     ) / 4
 
 
@@ -65,7 +59,7 @@ def get_top_student(list, student_number):
 
     try:
         for student in list:
-            student_average = {'name':student['name'],'average':get_average(student)}
+            student_average = {'name':student.name,'average':get_average(student)}
             if len(top_student) == 0:
                 top_student.append(student_average)
             else:
