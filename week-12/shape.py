@@ -43,5 +43,5 @@ class Rectangle(Shape):
     def calculate_perimeter(self):
         return (self.base * 2) + (self.hight * 2)
     
-    def calculate_area(self, base, height):
-        return base * height
+    def calculate_area(self):
+        return self.base * self.height
