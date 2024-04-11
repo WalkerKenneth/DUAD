@@ -9,4 +9,7 @@ class BankAccount:
 
 
     def withdraw(self, amount):
-        self.balance += (-amount)
+        if (self.balance - amount) < 0:
+            self.balance -= amount
+        else:
+            print('Impossible transaction, Not enough balance in the account')

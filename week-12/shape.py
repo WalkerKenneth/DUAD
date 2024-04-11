@@ -14,26 +14,34 @@ class Shape(ABC):
 
 
 class Circle(Shape):
+    def __init__(self, radius) -> None:
+        self.radius = radius
 
-    def calculate_perimeter(self, radius):
-        return 2 * math.pi * radius
+    def calculate_perimeter(self):
+        return 2 * math.pi * self.radius
     
-    def calculate_area(self, radius):
-        return math.pi * (radius ** 2)
+    def calculate_area(self):
+        return math.pi * (self.radius ** 2)
 
 
 class Square(Shape):
+    def __init__(self, side_size) -> None:
+        self.side_size = side_size
 
-    def calculate_perimeter(self, side):
-        return side * 4
+    def calculate_perimeter(self):
+        return self.side_size * 4
     
-    def calculate_area(self, side):
-        return side ** 2
+    def calculate_area(self):
+        return self.side_size ** 2
 
 
 class Rectangle(Shape):
-    def calculate_perimeter(self, side_1, side_2, side_3):
-        return side_1 + side_2 + side_3
+    def __init__(self, base, hight) -> None:
+        self.base = base
+        self.hight = hight
+
+    def calculate_perimeter(self):
+        return (self.base * 2) + (self.hight * 2)
     
-    def calculate_area(self, base, height):
-        return (base * height) / 2
+    def calculate_area(self):
+        return self.base * self.height
