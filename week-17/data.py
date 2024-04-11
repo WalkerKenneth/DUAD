@@ -3,12 +3,12 @@ import csv
 def import_category():
     category = []
     try:
-        with open('week-17/category.csv', 'r', encoding='utf-8') as file:
+        with open('category.csv', 'r', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 category.append(row['category'])
     except FileNotFoundError:
-        print('Document is not available')
+        pass
     return category
 
 
@@ -21,7 +21,7 @@ def export_category(category_list):
             }
         )
 
-    with open('week-17/category.csv', 'w', encoding='utf-8') as file:
+    with open('category.csv', 'w', encoding='utf-8') as file:
         writer = csv.DictWriter(file, ['category'])
         writer.writeheader()
         writer.writerows(list)
@@ -30,7 +30,7 @@ def export_category(category_list):
 def import_values():
     values = []
     try:
-        with open('week-17/values.csv', 'r', encoding='utf-8') as file:
+        with open('values.csv', 'r', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 values.append([
@@ -40,7 +40,7 @@ def import_values():
                     row['Amount'],
                 ])
     except FileNotFoundError:
-        print('Document is not available')
+        pass
     return values
 
 
@@ -56,7 +56,7 @@ def export_values(value_list):
             }
         )
 
-    with open('week-17/values.csv', 'w', encoding='utf-8') as file:
+    with open('values.csv', 'w', encoding='utf-8') as file:
         writer = csv.DictWriter(file, ['I/E', 'Detail', 'Category', 'Amount'])
         writer.writeheader()
         writer.writerows(list)
