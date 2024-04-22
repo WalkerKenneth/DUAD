@@ -37,7 +37,7 @@ def bubble_sort_linked_list(head):
             else:
                 prev = current
                 current = current.next
-                
+
     return head
 
 def main():
