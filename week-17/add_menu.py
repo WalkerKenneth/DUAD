@@ -24,14 +24,14 @@ class AddMenu:
                     if values[0] == '' or  values[1] == '' or values[2] == '':
                         raise Exception()
                     else:
-                        if values[1].lower() in category:
+                        if values[1] in category:
                             try:
-                                self.data = [self.type[0], values[0].lower(), values[1].lower(), int(values[2])]
+                                self.data = [self.type[0], values[0], values[1], int(values[2])]
+                                break
                             except ValueError:
-                                sg.popup('Amount must be a number')
+                                sg.popup('Please use a valid amount')
                         else:
                             sg.popup('Please use a valid category')
                 except Exception:
                     sg.popup('Required data was not provided')
-                break
         window.close()

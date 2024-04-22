@@ -35,8 +35,12 @@ class PrincipalMenu:
                     data.export_values(self.values)
 
             elif event == 'Add Category':
-                self.category.append(Category().add_category().lower())
-                data.export_category(self.category)
+                category_to_add = Category().add_category()
+                if category_to_add not in self.category:
+                    self.category.append(category_to_add)
+                    data.export_category(self.category)
+                else:
+                    sg.popup('Category already included in the Database')
 
             window['-TABLE-'].update(values=self.values)
 
