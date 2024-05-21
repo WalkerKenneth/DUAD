@@ -1,10 +1,10 @@
-body{
+body {
     background: #4761f7;
     color: #38415E;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.button{
+.button {
     background-color: #4761f7;
     color: #ffffff;
     border: none;
@@ -12,19 +12,30 @@ body{
     border-radius: 5px;
 }
 
-.white-background{
+.white-background {
     background: #ffffff;
     border-radius: 10px;
-    padding: 20px;
+    padding: 30px;
     width: 450px;
+    max-width: fit-content;
+    margin: auto;
+    margin-top: 5%;
 }
 
-.input-space{
+.input-space {
     background: #F5F6FA;
     margin: 30px 0px;
-    color: #B2B2BE;
+    color: #38415E;
     display: block;
     border: none;
-    padding: 10px;
+    padding: 8px;
     width: 350px;
+}
+
+.purple-division {
+    background: #4761f7;
+    padding: 2px;
+    border-radius: 3px;
+    width: 20px;
+    margin-top: 30px;
 }
