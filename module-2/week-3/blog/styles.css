@@ -1,0 +1,10 @@
+.header-logo {
+    height: 20px;
+    width: 20px;
+    fill: gray;
+}
+
+.content-image {
+    width: 800px;
+    height: auto;
+}
