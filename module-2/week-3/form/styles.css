@@ -1,0 +1,41 @@
+body {
+    background: #4761f7;
+    color: #38415E;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.button {
+    background-color: #4761f7;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.white-background {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    width: 450px;
+    max-width: fit-content;
+    margin: auto;
+    margin-top: 5%;
+}
+
+.input-space {
+    background: #F5F6FA;
+    margin: 30px 0px;
+    color: #38415E;
+    display: block;
+    border: none;
+    padding: 8px;
+    width: 350px;
+}
+
+.purple-division {
+    background: #4761f7;
+    padding: 2px;
+    border-radius: 3px;
+    width: 20px;
+    margin-top: 30px;
+}

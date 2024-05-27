@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="white-background">
+        <header>
+            <div class="purple-division"></div>
+            <h1>Contact Us!</h1>
+            <p>Got something to say? Fire away!</p>
+        </header>
+        <main>
+            <form action="/Users/kenneth/Documents/Python/DUAD/module-2/week-2/vote-message.html">
+                <input type="text" id="first_name" name="fullName" placeholder="First Name*" class="input-space"
+                    required>
+                <input type="text" id="last_name" name="fullName" placeholder="Last Name *" class="input-space" required>
+                <input type="email" id="email" name="userEmail" placeholder="Email address *" class="input-space"
+                    required>
+                <select name="message-about" id="message-about" class="input-space" required>
+                    <option hidden>What's your message about? *</option>
+                    <option value="dispute">Dispute</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="new-product">New product idea</option>
+                </select>
+                <textarea name="user-message" id="user-message" placeholder="Fire away! *"
+                    class="input-space"></textarea>
+                <input type="submit" value="Send my message" class="button">
+            </form>
+        </main>
+    </div>
+</body>
+
+</html>

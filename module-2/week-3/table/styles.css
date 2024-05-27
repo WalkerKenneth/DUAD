@@ -1,0 +1,108 @@
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background: #edebeb;
+    width: 900px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+thead {
+    background: #1a48c4;
+    color: white;
+}
+
+table {
+    border-bottom: 1px solid;
+    border-collapse: collapse;
+}
+
+th {
+    font-size: 10px;
+    padding: 20px;
+}
+
+tr {
+    border-bottom: 1px solid;
+    border-color: #edebeb;
+}
+
+.title {
+    width: 33%;
+    display: inline-block;
+    font-size: 30px;
+}
+
+.spacer {
+    padding: 6px;
+    background: white;
+    width: 33%;
+    display: inline-block;
+}
+
+.date {
+    width: 33%;
+    display: inline-block;
+    font-size: 15px;
+    margin: 15px;
+    text-align: right;
+}
+
+.award-star {
+    height: 40px;
+}
+
+.tier-number {
+    background: black;
+    color: white;
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.song-information {
+    display: flex;
+    width: 500px;
+    background: #ffffff;
+}
+
+.album-image {
+    height: 100px;
+    width: auto;
+    display: inline-block;
+}
+
+.album-image-1 {
+    height: 150px;
+    width: auto;
+    display: inline-block;
+}
+
+.song-singer {
+    display: block;
+    margin-left: 20px;
+}
+.song-name {
+    font-weight: bolder;
+}
+
+.award {
+    text-align: center;
+}
+
+.last-week {
+    text-align: center;
+    background: #ffffff;
+}
+
+.peak-pos {
+    text-align: center;
+}
+
+.weeks-chart {
+    text-align: center;
+    background: #ffffff;
+}
