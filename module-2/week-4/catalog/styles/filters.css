@@ -1,0 +1,36 @@
+.filters {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-button {
+    margin-top: 60px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 31%;
+    height: 140px;
+    border-radius: 20px;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    justify-content: space-between;
+}
+
+.yellow {
+    background-image: linear-gradient(to right, #ff9f32 , #ffcf1a);
+}
+
+.red {
+    background-image: linear-gradient(#ff5399,#ff136f);
+}
+
+.blue {
+    background-image: linear-gradient(to right, #418efd , #0cf5c5);
+}
+
+.filter-image {
+    height: 100%;
+}

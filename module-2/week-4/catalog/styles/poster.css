@@ -1,8 +1,47 @@
 .poster {
     background: #feebe9;
-    border-radius: 5px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.poster-info-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 50px;
+}
+
+.poster-img-container {
+    width: 40%;
 }
 
 .poster-img {
+    width: 100%;
+}
+
+.info {
+    margin: 10px;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.price {
+    color: #ff0864;
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.poster-button {
+    background-image: linear-gradient(#ff5399,#ff136f);
+    color: white;
+    border: none;
     width: 10rem;
+    border-radius: 15px;
+    padding: 1rem;
+    font-size: 1rem;
 }
