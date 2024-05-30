@@ -15,11 +15,24 @@ header {
     background: transparent;
     border: none;
     cursor: pointer;
-    font-size: 3rem;
+    font-size: 4rem;
     display: flex;
     align-items: center ;
+    cursor: pointer;
+    height: 100%;
 }
 
 .menu-button {
-    font-size: 1rem;
+    font-size: 2rem;
+    color: gray;
+}
+
+.home-button {
+    color: black;
+}
+
+.input-search {
+    margin-left: 400px;
+    height: 30px;
+    width: 300px;
 }
