@@ -1,0 +1,13 @@
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+}
+
+.input-email {
+    height: 2rem;
+    width: 250px;
+    margin-bottom: 20px;
+}
