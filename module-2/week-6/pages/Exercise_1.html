@@ -13,6 +13,7 @@
         Home
     </button>
     <div class="exercise">
+        <input type="text" id="Content">
         <button type="button" onclick="addElement()">Add</button>
         <button type="button" onclick="clearList()">Clear</button>
 
@@ -20,7 +21,9 @@
             function addElement() {
                 let list = document.getElementById("List");
                 let element = document.createElement("li");
-                element.textContent = "New Element";
+                let content = document.getElementById("Content");
+                element.textContent = content.value;
+                content.value = "";
                 list.appendChild(element);
             }
 
