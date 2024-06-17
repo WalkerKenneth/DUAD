@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exercise 1</title>
 </head>
+
 <body>
     <h1>Exercise 1</h1>
+    <button type="button" onclick="document.location='../Index.html'">
+        Home
+    </button>
+    <div class="exercise">
+        <button type="button" onclick="addElement()">Add</button>
+        <button type="button" onclick="clearList()">Clear</button>
 
-    <button type="button" onclick="document.location='../Index.html'">Home</button>
+        <script>
+            function addElement() {
+                let list = document.getElementById("List");
+                let element = document.createElement("li");
+                element.textContent = "New Element";
+                list.appendChild(element);
+            }
+
+            function clearList() {
+                let list = document.getElementById("List");
+                list.innerHTML = "";
+            }
+        </script>
+
+        <p>Shopping Cart:</p>
+        <ol id="List"></ol>
+    </div>
 </body>
+
 </html>
