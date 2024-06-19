@@ -1,0 +1,30 @@
+body {
+    background-color:darkgray;
+    font-family: "Lucida Console", "Courier New", monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    border: none;
+    background-color: gray;
+    font-weight: bolder;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#homeButton{
+    margin-top: 20px;
+    width: 100px;
+}
+
+#employmentDetails {
+    display: none;
+}
