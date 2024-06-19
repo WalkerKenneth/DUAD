@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercise 3</title>
+    <script src="../scripts/exercise_3.js"></script>
 </head>
+
 <body>
     <h1>Exercise 3</h1>
-    <button type="button" onclick="document.location='../Index.html'">Home</button>
     <div class="exercise">
+        <form id="registrationForm">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
 
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <label for="firstName">Name:</label><br>
+            <input type="text" id="firstName" name="firstName" required><br><br>
+
+            <label for="lastName">LastName:</label><br>
+            <input type="text" id="lastName" name="lastName" required><br><br>
+
+            <button type="submit">Register</button>
+        </form>
     </div>
+    <button type="button" onclick="document.location='../Index.html'">Home</button>
 </body>
+
 </html>
