@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 3</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <h1>Exercise 3</h1>
+    <div class="exercise">
+        <form id="registrationForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br>
+
+            <label for="firstName">Name:</label>
+            <input type="text" id="firstName" name="firstName"><br>
+
+            <label for="lastName">LastName:</label>
+            <input type="text" id="lastName" name="lastName"><br>
+
+            <label for="employeeStatus">Currently Employed</label>
+            <input type="radio" id="employeeYes" name="employeeStatus" value="yes"> Yes<br>
+            <input type="radio" id="employeeNo" name="employeeStatus" value="no"> No<br>
+
+            <div id="employmentDetails">
+                <label for="employmentDetailsInput">Job Details:</label>
+                <input type="text" id="employmentDetailsInput" name="employmentDetails"><br><br>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <button id="homeButton" type="button" onclick="document.location='../Index.html'">Home</button>
+
+    <script src="../scripts/exercise_3.js"></script>
+</body>
+
+</html>
