@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>To-Do</title>
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 
@@ -16,6 +16,27 @@
     </nav>
 
 
+    <div id="todo-list" class="content">
+        <h2>My Tasks</h2>
+        <form id="new-todo">
+            <input type="text" id="todo-text" placeholder="New task" required>
+            <button type="submit" class="form-button">Add</button>
+        </form>
+        <div id="filters">
+            <button class="nav-button" id="all">All</button>
+            <button class="nav-button" id="completed">Completed</button>
+            <button class="nav-button" id="incomplete">Incomplete</button>
+        </div>
+        <ul id="todos"></ul>
+
+        <ul class="task-list">
+            <li>first</li>
+            <li>Second</li>
+        </ul>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/todo.js"></script>
 
 </body>
 
