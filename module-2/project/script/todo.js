@@ -52,5 +52,4 @@ function deleteTodo(index) {
     renderTodos(todos);
 }
 
-// Initialize task list
 renderTodos(getTodos());
