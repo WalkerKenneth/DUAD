@@ -3,7 +3,6 @@ document.getElementById('login').addEventListener('submit', function (e) {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    // Validate user (simulated with JSON)
     fetch('data/users.json')
         .then(response => response.json())
         .then(users => {
@@ -33,11 +32,9 @@ function showTodoList() {
 }
 
 function hashPassword(password) {
-    // Simple hash function (use a better option in production)
     return btoa(password);
 }
 
-// Check if a user is logged in
 if (localStorage.getItem('loggedInUser')) {
     showTodoList();
 } else {
