@@ -1,17 +1,33 @@
-from flask import Flask
+import json
+from flask import Flask, request
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def root():
-    return "<h1>Hello, World!</h1>"
+    if request.method == 'GET':
+        return get()
+    elif request.method == 'POST':
+        return post()
+    elif request.method == 'PUT':
+        return put()
+    else:
+        return delete()
 
-@app.route('/information')
-def information():
-    return {
-        "year": 2024,
-        "description": "Secondary Route",
-    }
+def get ():
+    f = open('module-2-backend/week-1/data.json')
+    data = json.load(f)
+    return data
+
+def post ():
+    return 'POST'
+
+def put ():
+    return 'PUT'
+
+def delete ():
+    return 'DELETE'
+
 
 if __name__ == '__main__':
     app.run(host='localhost',port=8000, debug=True)
