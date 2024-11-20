@@ -1,0 +1,62 @@
+[
+    {
+        "Identifier": "001",
+        "Name": "Wireless Headphones",
+        "Description": "Noise-cancelling headphones with long-lasting battery.",
+        "Price": 59.99
+    },
+    {
+        "Identifier": "002",
+        "Name": "Sports Smartwatch",
+        "Description": "Smartwatch with fitness tracker and built-in GPS.",
+        "Price": 129.99
+    },
+    {
+        "Identifier": "003",
+        "Name": "Digital Camera",
+        "Description": "Compact high-resolution camera with 20x optical zoom.",
+        "Price": 249.99
+    },
+    {
+        "Identifier": "004",
+        "Name": "Bluetooth Speaker",
+        "Description": "Portable speaker with surround sound and water resistance.",
+        "Price": 79.99
+    },
+    {
+        "Identifier": "005",
+        "Name": "10-inch Tablet",
+        "Description": "Tablet with HD display, fast processor, and large storage capacity.",
+        "Price": 199.99
+    },
+    {
+        "Identifier": "006",
+        "Name": "Mechanical Keyboard",
+        "Description": "Backlit mechanical keyboard with tactile and durable switches.",
+        "Price": 89.99
+    },
+    {
+        "Identifier": "007",
+        "Name": "UltraWide Monitor",
+        "Description": "34-inch monitor with QHD resolution and adaptive sync technology.",
+        "Price": 499.99
+    },
+    {
+        "Identifier": "008",
+        "Name": "Laptop Backpack",
+        "Description": "Water-resistant backpack with multiple compartments and ergonomic support.",
+        "Price": 69.99
+    },
+    {
+        "Identifier": "009",
+        "Name": "Smart Lamp",
+        "Description": "LED lamp with voice control and adjustable brightness and color.",
+        "Price": 39.99
+    },
+    {
+        "Identifier": "010",
+        "Name": "Gaming Mouse",
+        "Description": "Ergonomic mouse with high-precision sensor and programmable buttons.",
+        "Price": 49.99
+    }
+]
