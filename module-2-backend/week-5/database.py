@@ -4,9 +4,9 @@ def get_db_connection():
     connection = psycopg2.connect(
         host="localhost",
         port="5432",
-        user="",
+        user="postgres",
         dbname="lyfter_car_rental",
-        password="",
+        password="citymeme",
     )
     return connection
 

@@ -3,6 +3,10 @@ from database import execute_query, get_db_connection
 
 app = Flask(__name__)
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({'message': 'Welcome to the Lyfter Car Rental API'})
+
 @app.route('/users', methods=['POST'])
 def create_user():
     data = request.json
