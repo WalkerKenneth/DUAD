@@ -1,12 +1,15 @@
+-- Create the database
 CREATE DATABASE Store;
 USE Store;
 
+-- Create the User table
 CREATE TABLE User (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL
 );
 
+-- Create the Products table
 CREATE TABLE Products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_name VARCHAR(100) NOT NULL,
@@ -14,91 +17,93 @@ CREATE TABLE Products (
     stock INT NOT NULL CHECK (stock >= 0)
 );
 
+-- Create the Bill table
 CREATE TABLE Bill (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     bill_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     total DECIMAL(10,2) NOT NULL,
-    bill_status ENUM('completada', 'retornada') DEFAULT 'completada',
+    bill_status ENUM('completed', 'revoked') DEFAULT 'completed',
     FOREIGN KEY (user_id) REFERENCES User(id)
 );
 
-CREATE TABLE Factura_Productos (
+-- Create the Bill_Products table
+CREATE TABLE Bill_Products (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    factura_id INT NOT NULL,
-    producto_id INT NOT NULL,
-    cantidad INT NOT NULL,
+    bill_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
     subtotal DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (factura_id) REFERENCES Facturas(id),
-    FOREIGN KEY (producto_id) REFERENCES Productos(id)
+    FOREIGN KEY (bill_id) REFERENCES Bill(id),
+    FOREIGN KEY (product_id) REFERENCES Products(id)
 );
 
--- 2. Transacción para realizar una compra
+-- Buy Product 
 DELIMITER $$
-CREATE PROCEDURE RealizarCompra(
-    IN p_usuario_id INT, 
-    IN p_producto_id INT, 
-    IN p_cantidad INT
+CREATE PROCEDURE Buy_Product(
+    IN p_user_id INT, 
+    IN p_product_id INT, 
+    IN p_quantity INT
 )
 BEGIN
-    DECLARE v_precio DECIMAL(10,2);
+    DECLARE v_price DECIMAL(10,2);
     DECLARE v_stock INT;
     DECLARE v_total DECIMAL(10,2);
-    DECLARE v_factura_id INT;
+    DECLARE v_bill_id INT;
     
     START TRANSACTION;
     
-    -- Validar que el producto tiene suficiente stock
+    -- Validate if the product has enough stock
     SELECT stock, precio INTO v_stock, v_precio FROM Productos WHERE id = p_producto_id;
     IF v_stock < p_cantidad THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Stock insuficiente';
     END IF;
     
-    -- Validar que el usuario existe
+    -- Validate if the user exists
     IF NOT EXISTS (SELECT 1 FROM Usuarios WHERE id = p_usuario_id) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Usuario no encontrado';
     END IF;
     
-    -- Crear la factura
-    SET v_total = v_precio * p_cantidad;
-    INSERT INTO Facturas (usuario_id, total) VALUES (p_usuario_id, v_total);
-    SET v_factura_id = LAST_INSERT_ID();
+    -- Create the bill
+    SET v_total = v_price * p_quantity;
+    INSERT INTO Bill (user_id, total) VALUES (p_user_id, v_total);
+    SET v_bill_id = LAST_INSERT_ID();
     
-    -- Agregar productos a la factura
-    INSERT INTO Factura_Productos (factura_id, producto_id, cantidad, subtotal) 
-    VALUES (v_factura_id, p_producto_id, p_cantidad, v_total);
+    -- Add products to the bill
+    INSERT INTO Bill_Products (bill_id, product_id, quantity, subtotal) 
+    VALUES (v_bill_id, p_product_id, p_quantity, v_total);
     
-    -- Reducir el stock del producto
-    UPDATE Productos SET stock = stock - p_cantidad WHERE id = p_producto_id;
+    -- Reduce the stock of the product
+    UPDATE Products SET stock = stock - p_quantity WHERE id = p_product_id;
     
     COMMIT;
 END $$
 DELIMITER ;
 
--- 3. Transacción para el retorno de un producto
+-- Return Product
 DELIMITER $$
-CREATE PROCEDURE RetornarProducto(
-    IN p_factura_id INT
+CREATE PROCEDURE Return_Product(
+    IN p_bill_id INT
 )
 BEGIN
     DECLARE v_exist INT;
     
     START TRANSACTION;
     
-    -- Validar que la factura existe y no ha sido retornada
-    SELECT COUNT(*) INTO v_exist FROM Facturas WHERE id = p_factura_id AND estado = 'completada';
+    -- Validate if the bill exists and is not returned
+    SELECT COUNT(*) INTO v_exist FROM Bill WHERE id = p_bill_id AND bill_status = 'completed';
     IF v_exist = 0 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Factura no encontrada o ya retornada';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Bill not found or already returned';
     END IF;
     
-    -- Aumentar el stock de los productos comprados
-    UPDATE Productos p
-    JOIN Factura_Productos fp ON p.id = fp.producto_id
-    SET p.stock = p.stock + fp.cantidad
-    WHERE fp.factura_id = p_factura_id;
+    -- Increase the stock of the purchased products
+    UPDATE Products p
+    JOIN Bill_Products bp ON p.id = bp.product_id
+    SET p.stock = p.stock + bp.quantity
+    WHERE bp.bill_id = p_bill_id;
     
-    -- Marcar la factura como retornada
-    UPDATE Facturas SET estado = 'retornada' WHERE id = p_factura_id;
+    -- Mark the bill as returned
+    UPDATE Bill SET bill_status = 'revoked' WHERE id = p_bill_id;
     
     COMMIT;
 END $$
