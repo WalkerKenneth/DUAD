@@ -1,8 +1,10 @@
-function Catalogo(children) {
+import ListaProductos from '../components/ListaProductos';
+
+function Catalogo({ productos }) {
     return (
         <>
             <h2>Catálogo de productos</h2>
-            {children}
+            <ListaProductos productos={productos} />
         </>
     );
 }

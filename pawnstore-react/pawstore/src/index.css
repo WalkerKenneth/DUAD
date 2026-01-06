@@ -87,3 +87,19 @@ button:focus-visible {
   padding: 2rem;
   min-height: 70vh;
 }
+
+.catalog {
+  padding: 1rem;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  text-align: center;
+}
